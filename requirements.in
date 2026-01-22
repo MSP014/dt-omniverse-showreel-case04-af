@@ -1,0 +1,14 @@
+# Core
+python-dotenv
+requests
+
+# Dev / QA
+pre-commit
+pip-tools
+black
+isort
+flake8
+bandit
+pip-audit
+pytest
+pytest-asyncio

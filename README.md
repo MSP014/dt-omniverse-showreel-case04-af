@@ -1,0 +1,55 @@
+# Case 04: Air Field (Logistics Optimization)
+
+> [!WARNING]
+> **Work in Progress:** This project is currently under active development. Some links and assets may be placeholders.
+
+---
+
+> **Role:** L2 Digital Twin (Optimization & Decision Support)
+> **Stack:** SideFX Houdini, NVIDIA Omniverse, NVIDIA cuOpt (VRP Solver)
+
+---
+
+## 🎯 Technical Highlights
+
+*This setup demonstrates an **L2 Digital Twin (Optimization)**, moving beyond visualization to algorithmic decision support.*
+
+* **Logistics Logic (VRP):** Visualizing the "Vehicle Routing Problem" (Traveling Salesman) for airfield tankers using **NVIDIA cuOpt** logic.
+* **Houdini -> USD Pipeline:** Procedural generation of apron markings and ground support equipment.
+* **Multi-Agent State:** Managing state visualization for Planes (Waiting/Refueling) and Tankers (Routing/Pumping).
+
+## 👁️ Visual Proof
+
+> *Placeholders for future GIFs*
+
+1. **Optimal Route Visualization:** `![VRP Graph](docs/img/vrp_graph_placeholder.gif)`
+2. **Refueling FUI:** `![Refueling HUD](docs/img/refueling_hud_placeholder.png)`
+3. **Apron Layering:** `![USD Layers](docs/img/usd_composition_placeholder.png)`
+
+## 🏗️ Architecture & Decisions
+
+This project follows the **Showreel Protocol** to manage the complexity of hybrid pipelines.
+
+* [**View Architecture Decision Records (ADR)**](docs/adr/) – Design notes on Naming Conventions, Security Guardrails, and VRP Logic integration.
+
+---
+
+## 💾 Project Data / Assets
+
+To keep this repository lightweight (GitHub < 1GB), heavy binary assets are stored externally.
+
+* [**Download Heavy Assets (One Drive / S3 Link TBD)**](https://example.com/placeholder)
+  * Includes: `*.usd` crates, `*.hip` source files, and high-res textures.
+
+## 🛠️ Setup & Installation
+
+1. **Clone:** `git clone https://github.com/MSP014/dt-omniverse-showreel-case04-af.git`
+2. **Env:** Create conda env: `conda create -n case04-env python=3.10`
+3. **Deps:** `pip install -r requirements.txt`
+4. **Hooks:** `pre-commit install`
+
+---
+
+## 📜 Changelog
+
+* **2026-01-23:** Initial repository bootstrap. Established **Showreel Protocol** (ADRs, Pre-commit, Hybrid Access).

@@ -1,0 +1,39 @@
+# Showreel Protocol - Case 04 Gitignore
+
+# Heavy Assets
+assets/
+cache/
+render_out/
+geo/
+
+# Source Files (Binary/Proprietary)
+AE/
+PRJ/
+Refs/
+EXR/
+MP4/
+OUT/
+AI/
+GIF/
+MOV/
+PNG/
+_incoming/
+
+# Files
+*.usd
+*.hip
+*.aep
+*.prproj
+.code-workspace
+
+# AI Configuration (Discretion)
+protocols/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
