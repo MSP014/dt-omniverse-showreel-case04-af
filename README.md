@@ -51,11 +51,13 @@ This project follows the **Showreel Protocol** to manage the complexity of hybri
 
 ```text
 .
-├── docs/        # ADRs and knowledge base
-│   ├── plans/   # Implementation plans & tech debt
-├── src/         # Core logic and scripts
-├── tests/       # Validation and testing suite
-└── tools/       # Internal pipeline utilities
+├── docs/             # Documentation and knowledge base
+│   ├── adr/          # Architecture Decision Records
+│   ├── knowledge_base/  # Reference documentation (Digital Twin frameworks, VRP theory)
+│   └── plans/        # Implementation plans & tech debt
+├── src/              # Core logic and scripts
+├── tests/            # Validation and testing suite
+└── tools/            # Internal pipeline utilities
 ```
 
 ---
