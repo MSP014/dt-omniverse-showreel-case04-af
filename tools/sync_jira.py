@@ -1,10 +1,18 @@
+import argparse
 import os
+import random  # nosec
 import sys
 import textwrap
 from base64 import b64encode
 
 import requests
 from dotenv import load_dotenv
+
+# Configure stdout for UTF-8 (Windows encoding fix)
+if sys.platform == "win32":
+    import io
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 
 def get_jira_session():
@@ -121,7 +129,15 @@ def parse_description(text):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Jira to Markdown Sync")
+    parser.add_argument(
+        "--save", action="store_true", help="Save output to file (default is dry-run)"
+    )
+    args = parser.parse_args()
+
     project_key = "AF"
+    output_file = "docs/plans/case 04 - implementation.md"
+
     issues = fetch_issues(project_key)
 
     all_map = {}
@@ -176,7 +192,7 @@ def main():
     output.append("")
     output.append(f"**Jira Project**: {project_key}")
     output.append("**Status**: In Progress")
-    output.append("**Last Updated**: 2026-02-01")
+    output.append("**Last Updated**: 2026-02-04")
     output.append("")
     output.append("---")
     output.append("")
@@ -232,8 +248,7 @@ def main():
 
         return "\n".join(res)
 
-    # Selection logic: Epic is included if it's in an active status itself
-    # OR has active children
+    # Selection logic: included if active or has active children
     active_statuses = ["to do", "in progress", "done"]
     active_epics = []
 
@@ -294,7 +309,7 @@ def main():
     active_tasks = [
         i
         for i in all_map.values()
-        if i["type"] != "Epic" and i["status"].lower() in ["to do", "in progress"]
+        if (i["type"] != "Epic" and i["status"].lower() in ["to do", "in progress"])
     ]
     # Sort by priority val (asc), then by created key (desc/asc)
     active_tasks.sort(key=lambda x: (x["priority_val"], x["key"]))
@@ -305,11 +320,36 @@ def main():
             f"(Priority: {task['priority']})"
         )
 
-    with open(
-        "docs/plans/case 04 - implementation.md", "w", encoding="utf-8", newline="\n"
-    ) as f:
+    if not args.save:
+        print(f"[DRY RUN] Generated {len(output)} lines of content.")
+        print(
+            f"[DRY RUN] Active Epics: {len(active_epics)} | "
+            f"Active Tasks: {len(active_tasks)}"
+        )
+        print("--- SAMPLE OUTPUT START ---")
+
+        # Random Sample
+        if active_epics:
+            epic = random.choice(active_epics)  # nosec  # nosec
+            print(f"## 🧩 EPIC: {epic['summary']} ({epic['key']})")
+            if epic.get("active_children"):
+                child = random.choice(epic["active_children"])  # nosec  # nosec
+                print(render_issue(child, 3))
+            else:
+                print("(Sample epic has no active children)")
+        elif active_tasks:
+            task = random.choice(active_tasks)  # nosec
+            print(render_issue(task, 1))
+        else:
+            print("(No active tasks or epics found to sample)")
+
+        print("--- SAMPLE OUTPUT END ---")
+        print("[DRY RUN] Run with --save to write to disk.")
+        return
+
+    with open(output_file, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(output).strip() + "\n")
-    print("Done.")
+    print(f"Done. Wrote to {output_file}")
 
 
 if __name__ == "__main__":

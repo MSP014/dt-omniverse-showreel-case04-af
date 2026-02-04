@@ -43,7 +43,7 @@ The digital twin calculates and visualises the **optimal refuelling sequence and
 
 ## 🏗️ Architecture & Decisions
 
-This project follows the **Showreel Protocol** to manage the complexity of hybrid pipelines.
+This project follows a **README-driven structure** to manage the complexity of hybrid Houdini/Omniverse pipelines.
 
 - [**View Architecture Decision Records (ADR)**](docs/adr/) – Design notes on Naming Conventions, Security Guardrails, and VRP Logic integration.
 
@@ -93,7 +93,7 @@ To keep this repository lightweight, heavy binary assets (USD Crates, Textures, 
 
 ## 🛠️ Setup & Installation
 
-1. **Clone:** `git clone https://github.com/MSP014/dt-omniverse-showreel-case04-af.git`
+1. **Clone:** `git clone https://github.com/MSP014/dt-openusd-showcase-case04-af.git`
 2. **Hydration:** (See "Asset Hydration" above) - Extract assets to `assets/_external/`.
 3. **Env:** Create conda env: `conda create -n case04-env python=3.10`
 4. **Deps:** `pip install -r requirements.txt`
@@ -103,4 +103,5 @@ To keep this repository lightweight, heavy binary assets (USD Crates, Textures, 
 
 ## 📜 Changelog
 
+- **2026-02-02:** Implemented external storage strategy for heavy assets (Git-agnostic).
 - **2026-01-23:** Initial repository bootstrap. Established **Showreel Protocol** (ADRs, Pre-commit, Hybrid Access).
