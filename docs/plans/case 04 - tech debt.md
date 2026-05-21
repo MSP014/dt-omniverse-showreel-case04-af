@@ -1,17 +1,19 @@
 # Case 04 Technical Debt
 
-## [PRE-COMMIT] Header Misidentification
+## Unresolved Technical Debts
 
-- **Status:** Resolved (2026-01-23)
-- **Severity:** Low
-- **Description:** The `.pre-commit-config.yaml` file contained a header typo.
-- **Resolution:** Corrected header from Case 01 to Case 04.
+_No open technical debts at the moment._
 
-## [SECURITY] Pip Security Lock & Dependencies Conflict
+## Resolved Technical Debts
 
-- **Status:** Open
+### [SECURITY] Pip Security Lock & Dependencies Conflict
+
+- **Status:** Resolved (2026-05-21)
 - **Severity:** High
-- **Description:** Environment (`case04-env`) is running `pip 25.3`, which contains **CVE-2026-1703**. However, upgrading to `pip 26.0+` breaks `pip-tools`.
-- **Instruction:** Do **NOT** upgrade pip until `pip-tools` releases a fix (approx. Late Feb 2026). If `pip-audit` flags this, verify that you have added `pip` to the ignore list (or accepted the risk).
-- **Check Action:** Check `pip-tools` updates weekly.
-- **⏰ Next Check Date:** 2026-03-05
+- **Description:** Environment previously used `pip 25.3` due to historic compatibility issues between `pip 26.0+` and older `pip-tools`.
+- **Resolution:** Upgraded tooling in `case04-env` and validated lock generation workflow.
+  - `pip` -> `26.1.1`
+  - `pip-tools` -> `7.5.3`
+  - Lock refresh command: `conda run -n case04-env pip-compile --upgrade requirements.in`
+  - Result: `requirements.txt` pins `pip-tools==7.5.3`.
+- **Verification Date:** 2026-05-21

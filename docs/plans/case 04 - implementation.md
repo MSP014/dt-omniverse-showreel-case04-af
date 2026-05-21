@@ -2,15 +2,11 @@
 
 **Jira Project**: AF
 **Status**: In Progress
-**Last Updated**: 2026-02-01
 
-> [!CAUTION] DISCUSSION ONLY
->
-> - **We are currently in DISCUSSION MODE.**
-> - **We DO NOT write code.**
-> - **We DO NOT modify any code or files without explicit commands.**
-> - **We ONLY discuss the proposed problem and/or task.**
-> - **This state continues until Max explicitly states "Обсуждение завершено".**
+## Communication Protocol
+
+- We communicate in Russian in chat, but all documentation, commits, code comments, and public artefacts are in English!
+- A question is not a command: when a message is phrased as a question, answer first and do not execute actions until an explicit command is given!
 
 ---
 
@@ -87,7 +83,7 @@
 **Objective**: Restoration of artifacts and verification of environment
   integrity following system reboot. Includes pre-commit fix and dependency
   lock.
-**Logged**: 30m
+**Logged**: 2h 30m
 
 ---
 
